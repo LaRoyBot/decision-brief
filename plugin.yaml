@@ -1,0 +1,15 @@
+name: decision-brief
+version: "0.2.0"
+description: "Decision Brief MVP — bundled decision-layer skill plus safe enrich hooks."
+provides_hooks:
+  - pre_llm_call
+  - pre_tool_call
+  - post_tool_call
+  - on_stream_delta
+  - on_interim_message
+  - on_stream_end
+config_schema:
+  probe_marker:
+    type: bool
+    default: false
+    description: Add a visible marker to clarify questions during the isolated Phase 1 interception test.
