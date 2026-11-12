@@ -102,7 +102,8 @@ hermes plugins enable decision-brief
 Then, interactively:
 
 ```text
-/decision-brief:decision-brief
+/decision-brief:decision-brief   (skill invocation — loads the decision layer)
+/decision-brief                  (plain activation alias)
 <ask a consequential question — the agent will ask one focused clarify, or decide solo>
 ```
 

@@ -282,6 +282,18 @@ def _on_stream_end(final_text: Any = None, finished: bool = False, error: Any = 
     return None
 
 
+def _activate_decision_brief(raw_args: str = "", **kwargs: Any) -> str:
+    """Session activation hint for the bundled skill (parity with skill invocation)."""
+    return (
+        "Decision Brief active.\n"
+        "For consequential, ambiguous or hard-to-reverse questions, ask me with a compact\n"
+        "Decision Brief: Decision / What I found / Why it matters / Recommendation (only\n"
+        "when the evidence justifies one), with native clarify choices.\n"
+        "Trivial and reversible calls: decide directly and continue.\n"
+        "No hidden reasoning; no fabricated evidence; no questionnaires for simple work."
+    )
+
+
 def _probe_status(raw_args: str = "", **kwargs: Any) -> str:
     """Render a content-free diagnostic timeline. Scope is profile-shared by design."""
     with _LOCK:
@@ -352,6 +364,11 @@ def register(ctx: Any) -> None:
     ctx.register_hook("on_stream_delta", _on_stream_delta)
     ctx.register_hook("on_interim_message", _on_interim_message)
     ctx.register_hook("on_stream_end", _on_stream_end)
+    ctx.register_command(
+        "decision-brief",
+        handler=_activate_decision_brief,
+        description="Activate Decision Brief behavior for consequential decisions in this session",
+    )
     ctx.register_command(
         "decision-brief-probe",
         handler=_probe_status,

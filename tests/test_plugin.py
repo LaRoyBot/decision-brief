@@ -51,6 +51,8 @@ class DecisionBriefMVPTests(unittest.TestCase):
         self.assertTrue(ctx.skills[0][1].is_file())
         self.assertTrue((MODULE._PLUGIN_DIR / "skills" / "decision-brief" / "SKILL.md").is_file())
         self.assertIn("decision-brief-probe", ctx.commands)
+        self.assertIn("decision-brief", ctx.commands)
+        self.assertIn("Decision Brief active", ctx.commands["decision-brief"](""))
 
     def test_clarify_enrichment_on_by_default_choices_untouched(self):
         ctx = FakeContext()

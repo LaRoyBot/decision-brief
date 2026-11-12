@@ -1,6 +1,6 @@
 name: decision-brief
-version: "0.2.0"
-description: "Decision Brief MVP — bundled decision-layer skill plus safe enrich hooks."
+version: "0.3.0"
+description: "Decision Brief MVP — bundled decision-layer skill plus safe enrich hooks and /decision-brief activation alias."
 provides_hooks:
   - pre_llm_call
   - pre_tool_call
